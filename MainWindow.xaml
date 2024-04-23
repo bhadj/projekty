@@ -1,0 +1,449 @@
+﻿<Window x:Class="projektick.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:projektick"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="400" Width="600">
+    <Grid>
+        <StackPanel Name="start" Visibility="Visible">
+            <Grid Background="Gray" Height="380">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="100"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Image Source="/tytul.png" Grid.ColumnSpan="5"/>
+                <Button Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="1" Height="40" Click="startuj">Zacznij nową grę</Button>
+                <Button Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="2" Height="40" Click="resetuj">Wróć do gry</Button>
+                <Button Grid.Column="1" Grid.ColumnSpan="3" Grid.Row="3" Height="40" Click="koniec">Wyjdź z gry</Button>
+                <TextBlock Grid.Row="4" Grid.ColumnSpan="2" FontSize="25" FontFamily="Comic Sans MS">Maciej Kułaga nr 11</TextBlock>
+            </Grid>
+        </StackPanel>
+        <StackPanel Name="gra" Visibility="Collapsed">
+            <Grid Background="Gray" Height="380">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="200"/>
+                    <ColumnDefinition Width="400"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="50"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+     
+                <!--Menu gry-->
+                <TextBlock 
+                    FontFamily="Comic Sans MS" 
+                    FontSize="20" 
+                    HorizontalAlignment="Center" 
+                    VerticalAlignment="Center"
+                    FontWeight="ExtraBold">
+                    Korony w sakiewce:
+                </TextBlock>
+                <TextBlock
+                    Grid.Row="1"
+                    FontFamily="Comic Sans MS"
+                    FontSize="25"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Name ="hajsik">
+                    0
+                </TextBlock>
+                <Button 
+                    Grid.Row="2"
+                    Height="40"
+                    Click="sklepik"
+                    FontSize="25"
+                    FontFamily="Comic Sans MS">
+                    Sklep
+                </Button>
+                <Button 
+                    Grid.Row="4"
+                    Height="40"
+                    Click="MainMenu"
+                    FontSize="17"
+                    FontFamily="Comic Sans MS">
+                    Wróć do menu głównego
+                </Button>
+                <Button
+                    Grid.Row="3"
+                    Height="40"
+                    Click="eq"
+                    FontSize="20"
+                    FontFamily="Comic Sans MS">
+                    Ekwipunek
+                </Button>
+                <!--Menu gry-->
+                
+                <!--Klikanie-->
+                <Button Grid.RowSpan="6" Grid.Column="1" Click="geralt" Background="Transparent">
+                    <Image Source="/gerwazy.png"/>
+                </Button>
+                <TextBlock 
+                    Grid.Column="1" 
+                    FontSize="20"
+                    FontWeight="ExtraBold"
+                    FontFamily="Comic Sans MS"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center">
+                    Klikaj w Geralta
+                </TextBlock>
+                <!--Klikanie-->
+            </Grid>
+        </StackPanel>
+        
+		<!--Ekwipunek-->
+        <StackPanel Name="eku" Visibility="Collapsed">
+            <Grid Background="Gray" Height="380">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Button
+                    Grid.ColumnSpan="4"
+                    FontFamily="Comic Sans MS"
+                    FontSize="35"
+                    Click="koniecEq">
+                    Wyjdź z ekwipunku
+                </Button>
+                <!--Miecz1 ekwipnuek-->
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.ColumnSpan="2"
+                    FontSize="23"
+                    FontFamily="Comic Sans MS"
+                    TextWrapping="Wrap"
+                    TextAlignment="Center">
+                    Ulepszony srebrny miecz szkoły Wilka
+                </TextBlock>
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    FontSize="23"
+                    FontFamily="Comic Sans MS"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap">
+                    +100 koron/klik
+                </TextBlock>
+                <Button
+                    Grid.Column="3"
+                    Grid.Row="1"
+                    FontFamily="Comic Sans MS"
+                    FontSize="20"
+                    Name="miecz1akcja"
+                    Click="wezMiecz1">
+                    Wyposaż
+                </Button>
+                <!--Miecz1 ekwipunek-->
+                
+                <!--Miecz2 ekwipunek-->
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.ColumnSpan="2"
+                    FontSize="23"
+                    FontFamily="Comic Sans MS"
+                    TextWrapping="Wrap"
+                    TextAlignment="Center">
+                    Wyśmienity srebrny miecz szkoły Wilka
+                </TextBlock>
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    FontSize="23"
+                    FontFamily="Comic Sans MS"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap">
+                    +500 koron/klik
+                </TextBlock>
+                <Button
+                    Grid.Column="3"
+                    Grid.Row="2"
+                    FontFamily="Comic Sans MS"
+                    FontSize="20"
+                    Name="miecz2akcja"
+                    Click="wezMiecz2">
+                    Wyposaż
+                </Button>
+                <!--Miecz2 ekwipunek-->
+                
+                <!--Miecz3 ekwipunek-->
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.ColumnSpan="2"
+                    FontSize="23"
+                    FontFamily="Comic Sans MS"
+                    TextWrapping="Wrap"
+                    TextAlignment="Center">
+                    Mistrzowski srebrny miecz szkoły Wilka
+                </TextBlock>
+                <TextBlock
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    FontSize="23"
+                    FontFamily="Comic Sans MS"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap">
+                    +2500 koron/klik
+                </TextBlock>
+                <Button
+                    Grid.Column="3"
+                    Grid.Row="3"
+                    FontFamily="Comic Sans MS"
+                    FontSize="20"
+                    Name="miecz3akcja"
+                    Click="wezMiecz3">
+                    Wyposaż
+                </Button>
+                <!--Miecz3 ekwipunek-->
+                
+                <!--Miecz4 ekwipunek-->
+                <TextBlock
+                    Grid.Row="4"
+                    Grid.ColumnSpan="2"
+                    FontSize="23"
+                    FontFamily="Comic Sans MS"
+                    TextWrapping="Wrap"
+                    TextAlignment="Center">
+                    Arcymistrzowski srebrny miecz szkoły Wilka
+                </TextBlock>
+                <TextBlock
+                    Grid.Row="4"
+                    Grid.Column="2"
+                    FontSize="23"
+                    FontFamily="Comic Sans MS"
+                    TextAlignment="Center"
+                    TextWrapping="Wrap">
+                    +7500 koron/klik
+                </TextBlock>
+                <Button
+                    Grid.Column="3"
+                    Grid.Row="4"
+                    FontFamily="Comic Sans MS"
+                    FontSize="20"
+                    Name="miecz4akcja"
+                    Click="wezMiecz4">
+                    Wyposaż
+                </Button>
+                <!--Miecz4 ekwipunek-->
+                
+                <!--Booster-->
+                <TextBlock
+                    Grid.ColumnSpan="2"
+                    Grid.Row="5"
+                    FontFamily="Comic Sans MS"
+                    FontSize="25"
+                    TextAlignment="Center"
+                    Name="booster1">
+                    Masz 0 boosterów
+                </TextBlock>
+                <TextBlock
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="5"
+                    FontFamily="Comic Sans MS"
+                    FontSize="25"
+                    TextAlignment="Center"
+                    Name="booster2">
+                    +0% koron/klik
+                </TextBlock>
+                <!--Booster-->
+            </Grid>
+        </StackPanel>
+		<!--Ekwipunek-->
+        
+        <StackPanel Name="sklep" Visibility="Collapsed">
+            <Grid Background="Gray" Height="380">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                
+                <!--Wyjście ze sklepu-->
+                <Button
+                    Grid.Column="1"
+                    Grid.ColumnSpan="2"
+                    FontFamily="Comic Sans MS"
+                    FontSize="35"
+                    Click="koniecZakupow">
+                    Wyjdź ze sklepu
+                </Button>
+                <!--Wyjście ze sklepu-->
+
+                <!--Ulepszony srebrny miecz szkoły Wilka-->
+                <TextBlock
+                    Grid.Row="1"
+                    FontFamily="Comic Sans MS"
+                    FontSize="18"
+                    FontWeight="ExtraBlack"
+                    TextWrapping="Wrap"
+                    TextAlignment="Center">
+                    Ulepszony srebrny miecz szkoły Wilka
+                </TextBlock>
+                <TextBlock
+                    Grid.Row="2"
+                    FontFamily="Comic Sans MS"
+                    FontSize="18"
+                    TextWrapping="Wrap"
+                    TextAlignment="Center">
+                    Otrzymujesz 100 koron za kliknięcie
+                </TextBlock>
+                <Button
+                    Grid.Row="3"
+                    Height="50"
+                    FontSize="30"
+                    Click="kupMiecz1">
+                    1000 koron
+                </Button>
+                <!--Ulepszony srebrny miecz szkoły Wilka-->
+                
+                <!--Wyśmienity srebrny miecz szkoły Wilka-->
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    FontFamily="Comic Sans MS"
+                    FontSize="18"
+                    FontWeight="ExtraBlack"
+                    TextWrapping="Wrap"
+                    TextAlignment="Center">
+                    Wyśmienity srebrny miecz szkoły Wilka
+                </TextBlock>
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    FontFamily="Comic Sans MS"
+                    FontSize="18"
+                    TextWrapping="Wrap"
+                    TextAlignment="Center">
+                    Otrzymujesz 500 koron za kliknięcie
+                </TextBlock>
+                <Button
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Height="50"
+                    FontSize="28"
+                    Click="kupMiecz2">
+                    5000 koron
+                </Button>
+                <!--Wyśmienity srebrny miecz szkoły Wilka-->
+                
+                <!--Mistrzowski srebrny miecz szkoły Wilka-->
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="2"
+                    FontFamily="Comic Sans MS"
+                    FontSize="18"
+                    FontWeight="ExtraBlack"
+                    TextWrapping="Wrap"
+                    TextAlignment="Center">
+                    Mistrzowski srebrny miecz szkoły Wilka
+                </TextBlock>
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="2"
+                    FontFamily="Comic Sans MS"
+                    FontSize="18"
+                    TextWrapping="Wrap"
+                    TextAlignment="Center">
+                    Otrzymujesz 2500 koron za kliknięcie
+                </TextBlock>
+                <Button
+                    Grid.Row="3"
+                    Grid.Column="2"
+                    Height="50"
+                    FontSize="25"
+                    Click="kupMiecz3">
+                    25000 koron
+                </Button>
+                <!--Mistrzowski srebrny miecz szkoły Wilka-->
+
+                <!--Arcymistrzowski srebrny miecz szkoły Wilka-->
+                <TextBlock
+                    Grid.Row="1"
+                    Grid.Column="3"
+                    FontFamily="Comic Sans MS"
+                    FontSize="18"
+                    FontWeight="ExtraBlack"
+                    TextWrapping="Wrap"
+                    TextAlignment="Center">
+                    Arcymistrzowski srebrny miecz szkoły Wilka
+                </TextBlock>
+                <TextBlock
+                    Grid.Row="2"
+                    Grid.Column="3"
+                    FontFamily="Comic Sans MS"
+                    FontSize="18"
+                    TextWrapping="Wrap"
+                    TextAlignment="Center">
+                    Otrzymujesz 7500 koron za kliknięcie
+                </TextBlock>
+                <Button
+                    Grid.Row="3"
+                    Grid.Column="3"
+                    Height="50"
+                    FontSize="25"
+                    Click="kupMiecz4">
+                    75000 koron
+                </Button>
+                <!--Arcymistrzowski srebrny miecz szkoły Wilka-->
+                
+                <!--Wzmocnienie siły-->
+                <TextBlock
+                    Grid.Row="4"
+                    Grid.ColumnSpan="2"
+                    FontFamily="Comic Sans MS"
+                    FontSize="19"
+                    FontWeight="ExtraBold"
+                    TextWrapping="Wrap"
+                    TextAlignment="Center">
+                    Wzmocnienie siły (każde kupione wzmocnienie daje 10% do koron na kliknięcie)
+                </TextBlock>
+                <Button
+                    Grid.Column="2"
+                    Grid.ColumnSpan="2"
+                    Grid.Row="4"
+                    FontFamily="Comic Sans MS"
+                    FontSize="30"
+                    Height="50"
+                    Name="boosty"
+                    Click="kupBoost">
+                    50 koron
+                </Button>
+                <!--Wzmocnienie siły-->
+
+            </Grid>
+        </StackPanel>
+    </Grid>
+</Window>
